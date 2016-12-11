@@ -1,17 +1,4 @@
-#include "Widget.h"
-#include "Button.h"
-#include "Edit.h"
-#include "HSlider.h"
-#include "VSlider.h"
-#include "Label.h"
-#include "Checkbox.h"
-#include "Radiobutton.h"
-#include "Spinbox.h"
-#include "Combobox.h"
-#include "Group.h"
-#include "Tabs.h"
-#include "LayoutWidget.h"
-#include "Image.h"
+#include "all.h"
 
 #include "debug.h"
 
@@ -106,6 +93,7 @@ Widget * Widget::parseAny(Widget *parent, std::map<int, Widget*>& widgets, tinyx
     if(tag == "tabs") return parse1<Tabs>(parent, widgets, e);
     if(tag == "stretch") return parse1<Stretch>(parent, widgets, e);
     if(tag == "image") return parse1<Image>(parent, widgets, e);
+    if(tag == "webview") return parse1<WebView>(parent, widgets, e);
 
     std::stringstream ss;
     ss << "invalid element <" << tag << ">";

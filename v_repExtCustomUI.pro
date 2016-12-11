@@ -1,4 +1,4 @@
-QT += core gui widgets
+QT += core gui widgets webenginewidgets
 
 TARGET = v_repExtCustomUI
 TEMPLATE = lib
@@ -92,6 +92,7 @@ HEADERS += \
     widgets/Spinbox.h \
     widgets/Tabs.h \
     widgets/VSlider.h \
+    widgets/WebView.h \
     widgets/Widget.h \
     widgets/Window.h \
     widgets/all.h \
@@ -123,6 +124,7 @@ SOURCES += \
     widgets/Spinbox.cpp \
     widgets/Tabs.cpp \
     widgets/VSlider.cpp \
+    widgets/WebView.cpp \
     widgets/Widget.cpp \
     widgets/Window.cpp \
     LuaCallbackFunction.cpp \

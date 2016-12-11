@@ -17,4 +17,5 @@
 #include "Spinbox.h"
 #include "Tabs.h"
 #include "VSlider.h"
+#include "WebView.h"
 
