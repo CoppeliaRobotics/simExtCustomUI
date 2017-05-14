@@ -17,6 +17,7 @@
 #include <QGroupBox>
 #include <QComboBox>
 #include <QDialog>
+#include <QWebEngineView>
 
 #include "stubs.h"
 
@@ -519,6 +520,22 @@ void UIProxy::onConnectionRemoved(QDataflowModelConnection *conn)
             int srcid = dataflow->getNodeId(conn->source()->node());
             int dstid = dataflow->getNodeId(conn->source()->node());
             emit connectionRemoved(dataflow, srcid, conn->source()->index(), dstid, conn->dest()->index());
+        }
+    }
+
+    DBG << "[leave]" << std::endl;
+}
+
+void UIProxy::onLoadProgress(int progress)
+{
+    ASSERT_THREAD(UI);
+    DBG << "[enter]" << std::endl;
+
+    if(QWebEngineView *view = dynamic_cast<QWebEngineView*>(sender()))
+    {
+        if(WebBrowser *browser = dynamic_cast<WebBrowser*>(Widget::byQWidget(view)))
+        {
+            emit loadProgress(browser, progress);
         }
     }
 
@@ -1130,5 +1147,10 @@ void UIProxy::onAddConnection(Dataflow *dataflow, int srcId, int srcOutlet, int 
 void UIProxy::onRemoveConnection(Dataflow *dataflow, int srcId, int srcOutlet, int dstId, int dstInlet)
 {
     dataflow->removeConnection(srcId, srcOutlet, dstId, dstInlet);
+}
+
+void UIProxy::onLoadUrl(WebBrowser *browser, std::string url)
+{
+    browser->loadUrl(url);
 }
 

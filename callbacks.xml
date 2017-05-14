@@ -2341,6 +2341,26 @@
         <return>
         </return>
     </command>
+    <command name="loadUrl">
+        <description>Load a URL in a webbrowser widget.</description>
+        <categories>
+            <category name="webbrowser" />
+            <category name="widgets" indirect="true" />
+        </categories>
+        <params>
+            <param name="handle" type="int">
+                <description>ui handle</description>
+            </param>
+            <param name="id" type="int">
+                <description>widget id</description>
+            </param>
+            <param name="url" type="string">
+                <description>the url</description>
+            </param>
+        </params>
+        <return>
+        </return>
+    </command>
     <script-function name="onclickCallback">
         <description>Callback for button click event.</description>
         <params>
@@ -2772,6 +2792,22 @@
             </param>
             <param name="dstInlet" type="int">
                 <description>the index (zero-based) of the destination node inlet</description>
+            </param>
+        </params>
+        <return>
+        </return>
+    </script-function>
+    <script-function name="onLoadProgressCallback">
+        <description>Callback called when content is loading in a webbrowser widget.</description>
+        <params>
+            <param name="handle" type="int">
+                <description>the handle of the UI</description>
+            </param>
+            <param name="id" type="int">
+                <description>the ID of the widget</description>
+            </param>
+            <param name="progress" type="int">
+                <description>the progress percentage from 0 to 100</description>
             </param>
         </params>
         <return>

@@ -96,6 +96,7 @@ Widget * Widget::parseAny(Widget *parent, std::map<int, Widget*>& widgets, tinyx
     if(tag == "tree") return parse1<Tree>(parent, widgets, e);
     if(tag == "progressbar") return parse1<Progressbar>(parent, widgets, e);
     if(tag == "dataflow") return parse1<Dataflow>(parent, widgets, e);
+    if(tag == "webbrowser") return parse1<WebBrowser>(parent, widgets, e);
 
     std::stringstream ss;
     ss << "invalid element <" << tag << ">";

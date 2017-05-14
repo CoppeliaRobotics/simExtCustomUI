@@ -22,4 +22,5 @@
 #include "Tabs.h"
 #include "Tree.h"
 #include "VSlider.h"
+#include "WebBrowser.h"
 

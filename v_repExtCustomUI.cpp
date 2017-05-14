@@ -985,6 +985,12 @@ void removeConnection(SScriptCallBack *p, const char *cmd, removeConnection_in *
     UIFunctions::getInstance()->removeConnection(dataflow, in->srcNodeId, in->srcOutlet, in->dstNodeId, in->dstInlet);
 }
 
+void loadUrl(SScriptCallBack *p, const char *cmd, loadUrl_in *in, loadUrl_out *out)
+{
+    WebBrowser *browser = getWidget<WebBrowser>(in->handle, in->id, cmd, "webbrowser");
+    UIFunctions::getInstance()->loadUrl(browser, in->url);
+}
+
 VREP_DLLEXPORT unsigned char v_repStart(void* reservedPointer, int reservedInt)
 {
     char curDirAndFile[1024];

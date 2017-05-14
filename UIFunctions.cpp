@@ -152,6 +152,8 @@ void UIFunctions::connectSignals()
     connect(uiproxy, &UIProxy::nodeOutletCountChanged, this, &UIFunctions::onNodeOutletCountChanged);
     connect(uiproxy, &UIProxy::connectionAdded, this, &UIFunctions::onConnectionAdded);
     connect(uiproxy, &UIProxy::connectionRemoved, this, &UIFunctions::onConnectionRemoved);
+    connect(this, &UIFunctions::loadUrl, uiproxy, &UIProxy::onLoadUrl, Qt::BlockingQueuedConnection);
+    connect(uiproxy, &UIProxy::loadProgress, this, &UIFunctions::onLoadProgress);
 }
 
 /**
@@ -584,5 +586,21 @@ void UIFunctions::onConnectionRemoved(Dataflow *dataflow, int srcNodeId, int src
     in.dstInlet = dstInlet;
     onConnectionRemovedCallback_out out;
     onConnectionRemovedCallback(dataflow->proxy->getScriptID(), dataflow->onConnectionRemoved.c_str(), &in, &out);
+}
+
+void UIFunctions::onLoadProgress(WebBrowser *browser, int progress)
+{
+    ASSERT_THREAD(!UI);
+    CHECK_POINTER(Widget, browser);
+
+    if(browser->proxy->scriptID == -1) return;
+    if(browser->onLoadProgress == "") return;
+
+    onLoadProgressCallback_in in;
+    in.handle = browser->proxy->getHandle();
+    in.id = browser->id;
+    in.progress = progress;
+    onLoadProgressCallback_out out;
+    onLoadProgressCallback(browser->proxy->getScriptID(), browser->onLoadProgress.c_str(), &in, &out);
 }
 

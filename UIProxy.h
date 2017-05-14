@@ -54,6 +54,7 @@ public slots:
     void onNodeOutletCountChanged(QDataflowModelNode *node, int count);
     void onConnectionAdded(QDataflowModelConnection *conn);
     void onConnectionRemoved(QDataflowModelConnection *conn);
+    void onLoadProgress(int progress);
     // ---
     void onShowWindow(Window *window);
     void onHideWindow(Window *window);
@@ -128,6 +129,7 @@ public slots:
     void onSetNodeOutletCount(Dataflow *dataflow, int id, int count);
     void onAddConnection(Dataflow *dataflow, int srcId, int srcOutlet, int dstId, int dstInlet);
     void onRemoveConnection(Dataflow *dataflow, int srcId, int srcOutlet, int dstId, int dstInlet);
+    void onLoadUrl(WebBrowser *browser, std::string url);
 
 signals:
     void buttonClick(Widget *widget);
@@ -153,6 +155,7 @@ signals:
     void nodeOutletCountChanged(Dataflow *dataflow, int id, int outlets);
     void connectionAdded(Dataflow *dataflow, int srcNodeId, int srcOutlet, int dstNodeId, int dstInlet);
     void connectionRemoved(Dataflow *dataflow, int srcNodeId, int srcOutlet, int dstNodeId, int dstInlet);
+    void loadProgress(WebBrowser *browser, int progress);
 };
 
 #endif // UIPROXY_H_INCLUDED

@@ -51,6 +51,7 @@ private slots:
     void onNodeOutletCountChanged(Dataflow *dataflow, int id, int outlets);
     void onConnectionAdded(Dataflow *dataflow, int srcNodeId, int srcOutlet, int dstNodeId, int dstInlet);
     void onConnectionRemoved(Dataflow *dataflow, int srcNodeId, int srcOutlet, int dstNodeId, int dstInlet);
+    void onLoadProgress(WebBrowser *browser, int progress);
 
 signals:
     void create(Proxy *proxy);
@@ -128,6 +129,7 @@ signals:
     void setNodeOutletCount(Dataflow *dataflow, int id, int count);
     void addConnection(Dataflow *dataflow, int srcId, int srcOutlet, int dstId, int dstInlet);
     void removeConnection(Dataflow *dataflow, int srcId, int srcOutlet, int dstId, int dstInlet);
+    void loadUrl(WebBrowser *browser, std::string url);
 };
 
 #endif // UIFUNCTIONS_H_INCLUDED

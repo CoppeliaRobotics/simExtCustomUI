@@ -1,4 +1,4 @@
-QT += core gui widgets printsupport
+QT += core gui widgets printsupport webenginewidgets
 
 TARGET = v_repExtCustomUI
 TEMPLATE = lib
@@ -111,6 +111,7 @@ HEADERS += \
     widgets/Tabs.h \
     widgets/Tree.h \
     widgets/VSlider.h \
+    widgets/WebBrowser.h \
     widgets/Widget.h \
     widgets/Window.h \
     widgets/all.h \
@@ -150,6 +151,7 @@ SOURCES += \
     widgets/Tabs.cpp \
     widgets/Tree.cpp \
     widgets/VSlider.cpp \
+    widgets/WebBrowser.cpp \
     widgets/Widget.cpp \
     widgets/Window.cpp \
     LuaCallbackFunction.cpp \
